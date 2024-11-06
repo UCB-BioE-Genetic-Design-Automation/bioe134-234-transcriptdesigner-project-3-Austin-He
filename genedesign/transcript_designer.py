@@ -328,7 +328,7 @@ if __name__ == "__main__":
     
     peptide = "MYPFIRTARMTV"
     
-    #this only has 13 characters and the diversity calculation divides num of unique codons by 62
+    #this peptide only has 13 characters and the diversity calculation divides num of unique codons by 62
     # so its impossible to meet the 0.5 threshold with this length peptide because there can't be enough codons
     # but we can get it to have 0 rare codons easily.
     
@@ -337,13 +337,17 @@ if __name__ == "__main__":
     #this has a hundred something characters and gets a higher diversity at aroud 0.7 to 0.8 because we have space to use more codons
     #its also way more likely to have more rare codons because its bigger, it gets around 10
     
-    #I feel like the diversity metric has to be normalized somehow and dividng by 62 isn't right. t
+    #I feel like the diversity metric has to be normalized somehow and dividng by 62 isn't right. 
+    # how all the different slidingn windows and monte carlo approaches are setup  
+    # can be tailored based on how the metrics are calculated to perform better
+    # 
     
     #sometimes when trying to fix an issue with hairpin or promoter we get returned None. 
     # this causes AttributeError: 'NoneType' object has no attribute 'codons'
     # we could add some logic around to stop this from causing an attribute error.
      #sometimes it also gets stuck on internal promoters and keeps trying to fix them forever. 
     #although in some earlier version this didn't happen
+    # it should just give up on that seq after a certain amount of tries and regenerate one to start from if this happens
     
     designer = TranscriptDesigner()
     designer.initiate()
