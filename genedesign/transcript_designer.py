@@ -342,6 +342,8 @@ if __name__ == "__main__":
     #sometimes when trying to fix an issue with hairpin or promoter we get returned None. 
     # this causes AttributeError: 'NoneType' object has no attribute 'codons'
     # we could add some logic around to stop this from causing an attribute error.
+     #sometimes it also gets stuck on internal promoters and keeps trying to fix them forever. 
+    #although in some earlier version this didn't happen
     
     designer = TranscriptDesigner()
     designer.initiate()
